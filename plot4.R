@@ -1,5 +1,7 @@
+Sys.setlocale("LC_TIME", "en_US.UTF-8")
+
 if (!file.exists('household_power_consumption.txt')){
-    download.file('https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip', destfile='household_power_consumption.zip')
+    download.file('http://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip', destfile='household_power_consumption.zip')
     unzip('household_power_consumption.zip')
 }
 
@@ -11,6 +13,7 @@ my_data <- data[data$Date == as.Date('01/02/2007', '%d/%m/%Y') | data$Date == as
 
 # 4
 png('plot4.png')
+horas <- strptime(paste(my_data$Date, my_data$Time), '%Y-%m-%d %H:%M:%S')
 par(mfrow=c(2,2))
 
 # 4.1
